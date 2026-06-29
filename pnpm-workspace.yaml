@@ -1,0 +1,8 @@
+# Retraso de seguridad de cadena de suministro: pnpm ignora versiones de paquetes
+# publicadas hace menos de este tiempo (en MINUTOS). 5 días = 7200 min.
+# Reduce el riesgo de instalar una versión recién publicada y comprometida.
+minimumReleaseAge: 7200
+
+# Para exceptuar paquetes concretos del retraso (si alguna vez hiciera falta):
+# minimumReleaseAgeExclude:
+#   - '@myorg/*'

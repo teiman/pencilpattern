@@ -1,0 +1,175 @@
+:root {
+  /* Superficies y texto base */
+  --bg: #111317;
+  --panel: #181b21;
+  --panel-2: #1f232b;
+  --line: #2c313b;
+  --text: #d7dae0;
+  --muted: #8b919c;
+  --accent: #d8a24a;
+  --accent-2: #5b8bd8;
+  /* Texto/glifos sobre el color de acento (botones activos, chips) */
+  --on-accent: #1a1a1a;
+
+  /* Fondos de lienzo (visor, dock, celdas) y placeholder de textura */
+  --canvas-bg: #0c0e12;
+  --texture-bg: #15171c;
+
+  /* Acciones destructivas */
+  --danger: #e08f8f;
+  --danger-border: #5a2c2c;
+
+  /* Estados del nodo. El borde de la celda solo destaca lo excepcional:
+     --status-busy (recalculando, naranja sutil) y --status-error (rojo).
+     Los demás se muestran neutros (var(--line)). */
+  --status-busy: #8a6a32;
+  --status-error: #d85b5b;
+  /* Conservados para glifos/leyenda si se necesitan, no para el borde. */
+  --status-clean: #3a3f4a;
+  --status-dirty: #d8a24a;
+  --status-computing: #5b8bd8;
+  --status-preview: #7a86d8;
+  --status-final: #5fae6b;
+
+  /* Ancho del panel derecho (Inspector). Base para el layout responsive. */
+  --panel-w: 360px;
+
+  /* Escala de espaciado (base 4px) y tipografía (en rem, respeta el zoom).
+     Disponibles para adopción incremental; el body ya usa la escala de fuente. */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --text-xs: 0.69rem; /* ~11px */
+  --text-sm: 0.81rem; /* ~13px */
+  --text-md: 0.94rem; /* ~15px */
+  --text-lg: 1.13rem; /* ~18px */
+
+  color-scheme: dark;
+}
+
+/* Tema claro */
+:root[data-theme='light'] {
+  --bg: #eef1f5;
+  --panel: #f7f9fc;
+  --panel-2: #e7ebf2;
+  --line: #cdd4df;
+  --text: #1c2330;
+  --muted: #5a6373;
+  --accent: #c07f2a;
+  --accent-2: #2f6fd6;
+  --on-accent: #ffffff;
+  --canvas-bg: #d8dde6;
+  --texture-bg: #c7cdd8;
+  --danger: #b03030;
+  --danger-border: #e0a0a0;
+  --status-busy: #c08a3a;
+  --status-error: #c23b3b;
+  --status-clean: #b6bdc9;
+  --status-dirty: #c07f2a;
+  --status-computing: #2f6fd6;
+  --status-preview: #6a5acd;
+  --status-final: #2f9a52;
+  color-scheme: light;
+}
+
+/* Alto contraste (sobre fondo oscuro): bordes y texto más fuertes */
+:root[data-theme='hc'] {
+  --bg: #000000;
+  --panel: #0a0a0a;
+  --panel-2: #161616;
+  --line: #6a7180;
+  --text: #ffffff;
+  --muted: #c8ccd4;
+  --accent: #ffc24d;
+  --accent-2: #7fb0ff;
+  --on-accent: #000000;
+  --canvas-bg: #000000;
+  --texture-bg: #0a0a0a;
+  --danger: #ff9a9a;
+  --danger-border: #b03030;
+  --status-busy: #ffb04d;
+  --status-error: #ff7070;
+  --status-clean: #8a91a0;
+  --status-dirty: #ffc24d;
+  --status-computing: #7fb0ff;
+  --status-preview: #b0a0ff;
+  --status-final: #7fe39a;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  /* Tamaño base que se adapta al ancho de ventana y respeta el zoom (rem). */
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: clamp(13px, 0.8rem + 0.2vw, 15px);
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+button,
+select,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+button:hover {
+  border-color: var(--accent-2);
+}
+button:active {
+  transform: translateY(1px);
+}
+
+/* Foco visible por teclado (distinto del color de selección, que es oro).
+   Solo en navegación por teclado, no al hacer clic. */
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respetar la preferencia del SO de movimiento reducido: anula animaciones y
+   transiciones (el spinner de cálculo pasa a estático; la rotación 3D se gatea
+   aparte en shape3d.ts vía matchMedia). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c313b;
+  border-radius: 6px;
+}

@@ -1,0 +1,34 @@
+{
+  "name": "pencilpattern",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Client-first procedural texture generator (WebGPU → WebGL2 → CPU), with a node graph, PBR export and live tile/3D previews.",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "svelte-check --tsconfig ./tsconfig.json && vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write \"src/**/*.{ts,svelte,css}\" \"tests/**/*.ts\""
+  },
+  "dependencies": {
+    "comlink": "^4.4.0",
+    "idb": "^8.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.1.0",
+    "@tsconfig/svelte": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "@webgpu/types": "^0.1.40",
+    "prettier": "^3.0.0",
+    "prettier-plugin-svelte": "^3.0.0",
+    "svelte": "^5.46.4",
+    "svelte-check": "^4.6.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.0.0"
+  }
+}

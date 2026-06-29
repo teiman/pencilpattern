@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+.vite/
+
+# Internal planning docs (kept locally, not published)
+docs/internal/
+
+# Reference / inspiration images (not part of the app)
+ref/
+
+# Editor / agent config
+.claude/

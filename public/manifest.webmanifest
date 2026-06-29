@@ -1,0 +1,13 @@
+{
+  "name": "PencilPattern",
+  "short_name": "PencilPattern",
+  "description": "Generador de texturas procedurales estilo lápiz/tinta.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#111317",
+  "theme_color": "#111317",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
