@@ -12,3 +12,14 @@ ref/
 
 # Editor / agent config
 .claude/
+
+# Fluxite suggestions
+Thumbs.db
+*.swp
+*~
+.cursor/
+.vscode/
+.idea/
+.env
+*.log
+npm-debug.log*
